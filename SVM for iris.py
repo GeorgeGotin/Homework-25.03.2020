@@ -18,7 +18,8 @@ X = model.transform(X)
 
 svc = LinearSVC()
 svc.fit(X,y)
-p = svc.coef_[0]
+p1 = svc.coef_[0]
+p2 = svc.intercept_[0]
 
 
 '''
@@ -35,6 +36,6 @@ plt.show()
 
 plt.plot([i[0] for i in X[0:list(y).index(1)]],[i[1] for i in X[0:list(y).index(1)]],'o')
 plt.plot([i[0] for i in X[list(y).index(1):len(list(y))]],[i[1] for i in X[list(y).index(1):len(list(y))]],'o')
-plt.plot([i for i in range(-5,5)],[i*p[0]+p[1] for i in range(-5,5)])
+plt.plot([i for i in range(-5,5)],[(i*p1[0]+p2)/-p1[1] for i in range(-5,5)])
 plt.show()
 
